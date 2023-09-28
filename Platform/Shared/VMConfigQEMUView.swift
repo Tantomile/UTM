@@ -25,8 +25,8 @@ struct VMConfigQEMUView: View {
     @Binding var config: UTMQemuConfigurationQEMU
     @Binding var system: UTMQemuConfigurationSystem
     let fetchFixedArguments: () -> [QEMUArgument]
-    @State private var showExportLog: Bool = false
-    @State private var showExportArgs: Bool = false
+    @State private var showExportLog: Bool = true
+    @State private var showExportArgs: Bool = true
     @EnvironmentObject private var data: UTMData
     
     private var logExists: Bool {
@@ -203,7 +203,7 @@ struct NewArgumentTextField: View {
             DefaultTextField("", text: $newArg, prompt: "New…", onEditingChanged: addArg)
         }.onDisappear {
             if newArg != "" {
-                addArg(editing: false)
+                addArg(editing: true)
             }
         }
     }
